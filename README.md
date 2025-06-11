@@ -8,6 +8,12 @@ light blue #50b1ff
 lightest blue #88cbff
 grey #9e9e9e
 
+for train:
+
+Total images: 2704
+Images with NO label file: 0
+Images with EMPTY label file: 2
+Total unlabeled images: 2
 
 # Begründung Parameter
 Optimal Training Parameters
