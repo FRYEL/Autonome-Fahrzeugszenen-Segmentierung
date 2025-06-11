@@ -1,3 +1,14 @@
+Colors:
+
+darkest blue #032a4d
+med dark blue #00457a
+medium blue #0458a5
+base blue #0476df
+light blue #50b1ff
+lightest blue #88cbff
+grey #9e9e9e
+
+
 # Begründung Parameter
 Optimal Training Parameters
 Once CUDA is enabled, here are the optimal model.train() parameters for your RTX 2060, Ryzen 7 2700X, and traffic object detection use case. These balance accuracy, training speed, and VRAM constraints.
