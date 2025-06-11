@@ -1,7 +1,7 @@
 task: detect
 mode: train
 model: ../yolov8n.pt
-data: ../trafic_data/data_1.yaml
+data: ../traffic_data/data_1.yaml
 epochs: 50
 time: null
 patience: 20
