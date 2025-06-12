@@ -1,3 +1,5 @@
+optimizer: AdamW(lr=0.0004, momentum=0.9) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)
+
 Colors:
 
 darkest blue #032a4d
