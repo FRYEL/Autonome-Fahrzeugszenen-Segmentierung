@@ -1,4 +1,8 @@
-Model summary: 129 layers, 3,014,943 parameters, 3,014,927 gradients, 8.2 GFLOPs
+removed taxi, police car and suv from classes and mapped to car (5) reduced total classes from 21 to 18
+
+YOLO11n summary: 181 layers, 2,593,350 parameters, 2,593,334 gradients, 6.5 GFLOPs
+
+Yolov8 Model summary: 129 layers, 3,014,943 parameters, 3,014,927 gradients, 8.2 GFLOPs
 
 optimizer: AdamW(lr=0.0004, momentum=0.9) with parameter groups 57 weight(decay=0.0), 64 weight(decay=0.0005), 63 bias(decay=0.0)
 
