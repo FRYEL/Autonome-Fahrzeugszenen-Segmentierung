@@ -1,3 +1,13 @@
+for label in labels/*.txt; do
+    if grep -E '^(0|1|6|7|8|13|17)[[:space:]]' "$label"; then
+        base=$(basename "$label" .txt)
+        cp "images/$base.jpg" oversampled/images/"$base"_copy.jpg
+        cp "$label" oversampled/labels/"$base"_copy.txt
+    fi
+done
+
+duplicated classes 0|1|6|7|8|13|17
+
 removed taxi, police car and suv from classes and mapped to car (5) reduced total classes from 21 to 18
 
 YOLO11n summary: 181 layers, 2,593,350 parameters, 2,593,334 gradients, 6.5 GFLOPs
