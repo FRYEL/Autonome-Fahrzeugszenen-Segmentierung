@@ -1,3 +1,7 @@
+mAP before augmentation: 0.45257
+mAP after augmentation: 0.51702
+mAP after augmentation with tuning:0.54587
+
 # Output of train37
 
 Validating traffic_training/train37/weights/best.pt...

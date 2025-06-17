@@ -1,0 +1,15 @@
+ Class                      Images  Instances   mAP50  mAP50-95
+
+bicycle                     30         32       0.368     0.17
+bus                         220        425      0.644    0.419
+car                         239        922      0.791    0.519
+minibus                     2          2        0.497    0.397
+minivan                     87        110       0.408    0.308
+motorbike                   166        335      0.562    0.206
+pickup                      105        142      0.378    0.232
+rickshaw                    62        192       0.675    0.428
+scooter                     1          1        0.995    0.199
+three wheelers -CNG-        148        252      0.702    0.466
+truck                       53         84       0.525    0.343
+van                         52         62       0.22    0.139
+wheelbarrow                 9          9        0.257    0.108
