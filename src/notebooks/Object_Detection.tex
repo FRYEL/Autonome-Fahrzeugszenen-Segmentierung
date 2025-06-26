@@ -480,7 +480,6 @@ taxi, suv and polic car are mapped to the car class.
                 \PY{n}{new\PYZus{}line} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n+nb+bp}{cls}\PY{p}{)}\PY{p}{]} \PY{o}{+} \PY{n}{parts}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{)}
                 \PY{n}{new\PYZus{}lines}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{new\PYZus{}line}\PY{p}{)}
 
-
         \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{path}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{w}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
             \PY{n}{f}\PY{o}{.}\PY{n}{write}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{new\PYZus{}lines}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
@@ -495,6 +494,7 @@ classes}\label{shifting-classes-12-due-to-removed-classes}
 \PY{c+c1}{\PYZsh{} Classes that were removed (already mapped to class 5)}
 \PY{n}{removed\PYZus{}classes} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{16}\PY{p}{]}
 
+
 \PY{k}{def}\PY{+w}{ }\PY{n+nf}{final\PYZus{}shift}\PY{p}{(}\PY{n+nb+bp}{cls}\PY{p}{)}\PY{p}{:}
     \PY{c+c1}{\PYZsh{} Skip if already merged to 5}
     \PY{k}{if} \PY{n+nb+bp}{cls} \PY{o}{==} \PY{l+m+mi}{5}\PY{p}{:}
@@ -502,6 +502,7 @@ classes}\label{shifting-classes-12-due-to-removed-classes}
     \PY{c+c1}{\PYZsh{} Shift down if above removed ones}
     \PY{n}{shift} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{l+m+mi}{1} \PY{k}{for} \PY{n}{r} \PY{o+ow}{in} \PY{n}{removed\PYZus{}classes} \PY{k}{if} \PY{n+nb+bp}{cls} \PY{o}{\PYZgt{}} \PY{n}{r}\PY{p}{)}
     \PY{k}{return} \PY{n+nb+bp}{cls} \PY{o}{\PYZhy{}} \PY{n}{shift}
+
 
 \PY{k}{for} \PY{n}{label\PYZus{}dir} \PY{o+ow}{in} \PY{n}{label\PYZus{}dirs}\PY{p}{:}
     \PY{k}{for} \PY{n}{file} \PY{o+ow}{in} \PY{n}{os}\PY{o}{.}\PY{n}{listdir}\PY{p}{(}\PY{n}{label\PYZus{}dir}\PY{p}{)}\PY{p}{:}
@@ -661,7 +662,8 @@ Set}\label{visual-comparison-on-validation-set}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} Best Model trained by .tune() function}
 \PY{n}{model} \PY{o}{=} \PY{n}{YOLO}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{../traffic\PYZus{}training/best\PYZus{}tuning/train37/weights/best.pt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n}{results} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{source}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{../../traffic\PYZus{}data/valid/images/Pias\PYZhy{}\PYZhy{}289\PYZhy{}\PYZus{}jpg.rf.a6cb4e0f81f99b7c803bd9c9832163da.jpg}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{conf}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{,} \PY{n}{iou}\PY{o}{=}\PY{l+m+mf}{0.45}\PY{p}{)}
+\PY{n}{results} \PY{o}{=} \PY{n}{model}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{source}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{../../traffic\PYZus{}data/valid/images/Pias\PYZhy{}\PYZhy{}289\PYZhy{}\PYZus{}jpg.rf.a6cb4e0f81f99b7c803bd9c9832163da.jpg}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}
+                        \PY{n}{conf}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{,} \PY{n}{iou}\PY{o}{=}\PY{l+m+mf}{0.45}\PY{p}{)}
 \PY{k}{for} \PY{n}{result} \PY{o+ow}{in} \PY{n}{results}\PY{p}{:}
     \PY{n}{result}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
     \PY{n}{result}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{p}{)}
@@ -673,8 +675,24 @@ Set}\label{visual-comparison-on-validation-set}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{c+c1}{\PYZsh{} Basic YOLO11n Baseline Model trained without .tune() function}
 \PY{n}{model2} \PY{o}{=} \PY{n}{YOLO}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{../traffic\PYZus{}training/yolo11n\PYZus{}baseline/weights/best.pt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n}{results2} \PY{o}{=} \PY{n}{model2}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{source}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{../../traffic\PYZus{}data/valid/images/Pias\PYZhy{}\PYZhy{}289\PYZhy{}\PYZus{}jpg.rf.a6cb4e0f81f99b7c803bd9c9832163da.jpg}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{conf}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{,} \PY{n}{iou}\PY{o}{=}\PY{l+m+mf}{0.45}\PY{p}{)}
+\PY{n}{results2} \PY{o}{=} \PY{n}{model2}\PY{o}{.}\PY{n}{predict}\PY{p}{(}
+    \PY{n}{source}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{../../traffic\PYZus{}data/valid/images/Pias\PYZhy{}\PYZhy{}289\PYZhy{}\PYZus{}jpg.rf.a6cb4e0f81f99b7c803bd9c9832163da.jpg}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{conf}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{,}
+    \PY{n}{iou}\PY{o}{=}\PY{l+m+mf}{0.45}\PY{p}{)}
 \PY{k}{for} \PY{n}{result} \PY{o+ow}{in} \PY{n}{results2}\PY{p}{:}
+    \PY{n}{result}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+    \PY{n}{result}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{ }{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Untrained YOLO11n Model}
+\PY{n}{model3} \PY{o}{=} \PY{n}{YOLO}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{../yolo11n.pt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n}{results3} \PY{o}{=} \PY{n}{model3}\PY{o}{.}\PY{n}{predict}\PY{p}{(}
+    \PY{n}{source}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{../../traffic\PYZus{}data/valid/images/Pias\PYZhy{}\PYZhy{}289\PYZhy{}\PYZus{}jpg.rf.a6cb4e0f81f99b7c803bd9c9832163da.jpg}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{conf}\PY{o}{=}\PY{l+m+mf}{0.25}\PY{p}{,}
+    \PY{n}{iou}\PY{o}{=}\PY{l+m+mf}{0.45}\PY{p}{)}
+\PY{k}{for} \PY{n}{result} \PY{o+ow}{in} \PY{n}{results3}\PY{p}{:}
     \PY{n}{result}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
     \PY{n}{result}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
@@ -711,7 +729,9 @@ Set}\label{visual-comparison-on-validation-set}
 
 \PY{c+c1}{\PYZsh{} clsses}
 \PY{n}{class\PYZus{}names} \PY{o}{=} \PY{p}{[}
-\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ambulance}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{army vehicle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{auto rickshaw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bicycle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{car}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{garbagevan}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{human hauler}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{minibus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{minivan}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{motorbike}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pickup}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{policecar}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rickshaw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{scooter}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{suv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{taxi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{three wheelers \PYZhy{}CNG\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{truck}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{van}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{wheelbarrow}\PY{l+s+s1}{\PYZsq{}}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ambulance}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{army vehicle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{auto rickshaw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bicycle}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{bus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{car}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{garbagevan}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{human hauler}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{minibus}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{minivan}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{motorbike}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pickup}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{policecar}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{rickshaw}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{scooter}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{suv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{taxi}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{three wheelers \PYZhy{}CNG\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}
+    \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{truck}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{van}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{wheelbarrow}\PY{l+s+s1}{\PYZsq{}}
 \PY{p}{]}
 \end{Verbatim}
 \end{tcolorbox}
@@ -838,8 +858,7 @@ Set}\label{visual-comparison-on-validation-set}
     \PY{n+nb}{range}\PY{o}{=}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{image\PYZus{}width}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{image\PYZus{}height}\PY{p}{]}\PY{p}{]}
 \PY{p}{)}
 
-\PY{c+c1}{\PYZsh{} Plot}
-\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mf}{3.4}\PY{p}{,} \PY{l+m+mf}{2.5}\PY{p}{)}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Single\PYZhy{}column LaTeX size}
+\PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mf}{3.4}\PY{p}{,} \PY{l+m+mf}{2.5}\PY{p}{)}\PY{p}{)}
 \PY{n}{sns}\PY{o}{.}\PY{n}{set\PYZus{}style}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{white}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 \PY{n}{sns}\PY{o}{.}\PY{n}{heatmap}\PY{p}{(}
     \PY{n}{heatmap}\PY{o}{.}\PY{n}{T}\PY{p}{,}
